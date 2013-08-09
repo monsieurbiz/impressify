@@ -1,0 +1,86 @@
+#!/bin/bash
+# License: This file is under LGPL v3. See LICENSE file distributed with this file.
+# Author: Jacques Bodin-Hullin <j.bodinhullin@monsieurbiz.com)
+
+echo "Title of your presentation?"
+read title
+
+# Create directories
+if [[ ! -d css ]]; then
+    echo "Create css/"
+    mkdir css
+fi
+
+if [[ ! -d js ]]; then
+    echo "Create js/"
+    mkdir js
+fi
+
+if [[ ! -f 'js/impress.js' ]]; then
+    echo "Download js/impress.js"
+    wget -q --no-check-certificate https://raw.github.com/bartaz/impress.js/master/js/impress.js -O js/impress.js
+fi
+
+if [[ ! -f 'css/default.css' ]]; then
+    echo "Create css/default.css"
+    cat > css/default.css <<EOF
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Fallback message */
+.fallback-message {
+        display: none;
+}
+.impress-not-supported .fallback-message {
+        display: block;
+}
+
+/** Your presentation's styles **/
+
+EOF
+fi
+
+if [[ ! -f 'index.html' ]]; then
+    echo "Create index.html"
+    cat > index.html <<EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>${title}</title>
+    <link rel="stylesheet" href="css/default.css" />
+</head>
+<body class="impress-not-supported">
+
+<!-- Not supported? -->
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <!-- Presentation -->
+    <!-- *********************************************************************************** -->
+
+    <div class="step" date-x="" data-y="" data-scale="1" data-rotate="" data-rotate-x="" data-rotate-y="">
+        <h1>${title}</h1>
+        <p>My First step</p>
+    </div>
+
+    <!-- *********************************************************************************** -->
+
+</div>
+
+<!-- Impress :') -->
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+
+</body>
+</html>
+EOF
+fi
+
+echo "All good! Impress now ;)"
