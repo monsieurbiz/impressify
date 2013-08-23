@@ -161,7 +161,7 @@ if [[ ! -f 'index.html' ]]; then
     <!-- Presentation -->
     <!-- *********************************************************************************** -->
 
-    <div class="step" date-x="" data-y="" data-scale="1" data-rotate="" data-rotate-x="" data-rotate-y="">
+    <div class="step">
         <h1>${title}</h1>
         <p>My First step</p>
     </div>
