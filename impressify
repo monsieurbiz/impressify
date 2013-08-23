@@ -16,6 +16,11 @@ if [[ ! -d js ]]; then
     mkdir js
 fi
 
+if [[ ! -d img ]]; then
+    echo "Create img/"
+    mkdir img
+fi
+
 if [[ ! -f 'js/impress.js' ]]; then
     echo "Download js/impress.js"
     wget -q --no-check-certificate https://raw.github.com/bartaz/impress.js/master/js/impress.js -O js/impress.js
