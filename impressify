@@ -6,27 +6,27 @@ echo "Title of your presentation?"
 read title
 
 # Create directories
-if [[ ! -d css ]]; then
+if [ ! -d css ]; then
     echo "Create css/"
     mkdir css
 fi
 
-if [[ ! -d js ]]; then
+if [ ! -d js ]; then
     echo "Create js/"
     mkdir js
 fi
 
-if [[ ! -d img ]]; then
+if [ ! -d img ]; then
     echo "Create img/"
     mkdir img
 fi
 
-if [[ ! -f 'js/impress.js' ]]; then
+if [ ! -f 'js/impress.js' ]; then
     echo "Download js/impress.js"
     wget -q --no-check-certificate https://raw.github.com/bartaz/impress.js/master/js/impress.js -O js/impress.js
 fi
 
-if [[ ! -f 'css/default.css' ]]; then
+if [ ! -f 'css/default.css' ]; then
     echo "Create css/default.css"
     cat > css/default.css <<EOF
 
@@ -280,7 +280,7 @@ body {
 EOF
 fi
 
-if [[ ! -f 'index.html' ]]; then
+if [ ! -f 'index.html' ]; then
     echo "Create index.html"
     cat > index.html <<EOF
 <!DOCTYPE html>
