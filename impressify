@@ -173,9 +173,108 @@ a:focus {
 
 /** Your presentation's styles **/
 body {
+    /* Put your font here :
+    font-family: ;
+    */
+    min-height: 740px;
+
+    background: rgb(215, 215, 215);
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(rgb(240, 240, 240)), to(rgb(190, 190, 190)));
+    background: -webkit-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:    -moz-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:     -ms-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:      -o-radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+    background:         radial-gradient(rgb(240, 240, 240), rgb(190, 190, 190));
+
+    -webkit-transition: 0.5s;
+    -moz-transition:    0.5s;
+    -ms-transition:     0.5s;
+    -o-transition:      0.5s;
+    transition:         0.5s;
+
+    -webkit-transform-style: preserve-3d;
+    -moz-transform-style:    preserve-3d; /* Y U need this Firefox?! */
+    -ms-transform-style:     preserve-3d;
+    -o-transform-style:      preserve-3d;
+    transform-style:         preserve-3d;
 }
 
 .impress-supported .step {
+    text-align: center;
+}
+
+.impress-enabled .step {
+    margin: 0;
+    opacity: 0.3;
+
+    -webkit-transition: opacity 1s;
+    -moz-transition:    opacity 1s;
+    -ms-transition:     opacity 1s;
+    -o-transition:      opacity 1s;
+    transition:         opacity 1s;
+}
+
+.impress-enabled .step.active {
+    opacity: 1;
+}
+
+/* Cards? */
+.step.card {
+    width: 1000px;
+    height: 700px;
+    background: white;
+    border-radius: 25px;
+    box-shadow: -1px 2px 5px 1px rgba(100, 100, 100, 0.5);
+    overflow: hidden;
+    position: relative;
+}
+
+.step.card > h1 {
+    margin-top: 70px;
+    font-size: 60px;
+}
+
+.step.card > h2 {
+    margin-top: 70px;
+    font-size: 45px;
+}
+
+/*
+.step.card > ul {
+    margin-top: 125px;
+    margin-left: 125px;
+    text-align: left;
+    list-style-type: disc;
+    font-size: 160%;
+    text-transform: uppercase;
+}
+
+.step.card > ul > li {
+    padding-bottom: 20px;
+    font-weight: normal;
+}
+*/
+
+/*
+.step.card > ul > li > span {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.step.card > ul > li > span:first-child {
+    padding-right: 30px;
+    font-size: 30px;
+}
+*/
+
+.step.card p.footnote {
+    font-size: 20px;
+    position: absolute;
+    bottom: 15px;
+    width: 1000px;
+    text-align: center;
+    /*text-transform: uppercase;*/
+    overflow: hidden;
 }
 
 EOF
@@ -204,9 +303,10 @@ if [[ ! -f 'index.html' ]]; then
     <!-- Presentation -->
     <!-- *********************************************************************************** -->
 
-    <div id="first" class="step">
+    <div id="first" class="step card">
         <h1>${title}</h1>
         <p>My First step</p>
+        <p class="footnote">this is a footnote.</p>
     </div>
 
     <!-- *********************************************************************************** -->
